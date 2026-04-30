@@ -1,0 +1,27 @@
+{
+  "baixo": {
+    "prioridade": "rotina",
+    "acoes": [
+      "Reavaliar sinais em 24h",
+      "Orientar adesão a hábitos saudáveis",
+      "Manter acompanhamento ambulatorial"
+    ]
+  },
+  "medio": {
+    "prioridade": "atencao",
+    "acoes": [
+      "Monitorar sinais vitais em intervalos curtos",
+      "Agendar avaliação médica prioritária",
+      "Reforçar investigação de fatores de risco"
+    ]
+  },
+  "alto": {
+    "prioridade": "urgente",
+    "acoes": [
+      "Acionar protocolo de emergência institucional",
+      "Solicitar avaliação médica imediata",
+      "Monitoramento contínuo até estabilização"
+    ]
+  }
+}
+
