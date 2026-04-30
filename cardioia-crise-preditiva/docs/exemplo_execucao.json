@@ -1,0 +1,87 @@
+{
+  "orquestrador": "Agente Orquestrador",
+  "probabilidade_pico_risco": 1.0,
+  "classe_risco": "alto",
+  "protocolos": {
+    "prioridade": "urgente",
+    "acoes": [
+      "Acionar protocolo de emergência institucional",
+      "Solicitar avaliação médica imediata",
+      "Monitoramento contínuo até estabilização"
+    ]
+  },
+  "mensagem_final": "Este é um protótipo educacional e não substitui uma avaliação médica profissional. Os dados indicam um risco elevado que exige acionamento imediato dos protocolos de emergência e avaliação médica.",
+  "historico": [
+    {
+      "event": "input_received",
+      "patient_data": {
+        "idade": 67,
+        "pressao_sistolica": 168,
+        "frequencia_cardiaca": 112,
+        "colesterol_total": 265,
+        "saturacao_o2": 93,
+        "historico_familiar": 1,
+        "tabagista": 1
+      }
+    },
+    {
+      "event": "handoff",
+      "from": "Agente Orquestrador",
+      "to": "Agente Analista de Risco",
+      "payload": {
+        "patient_fields": [
+          "colesterol_total",
+          "frequencia_cardiaca",
+          "historico_familiar",
+          "idade",
+          "pressao_sistolica",
+          "saturacao_o2",
+          "tabagista"
+        ]
+      }
+    },
+    {
+      "event": "risk_result",
+      "result": {
+        "agente": "Agente Analista de Risco",
+        "tool": "predict_risk_tool",
+        "probabilidade_pico_risco": 1.0,
+        "classe_risco": "alto",
+        "predicao_binaria": 1
+      }
+    },
+    {
+      "event": "handoff",
+      "from": "Agente Orquestrador",
+      "to": "Agente Especialista em Protocolos",
+      "payload": {
+        "classe_risco": "alto"
+      }
+    },
+    {
+      "event": "protocol_result",
+      "result": {
+        "agente": "Agente Especialista em Protocolos",
+        "classe_risco": "alto",
+        "tool": "get_protocols_tool",
+        "protocolos": {
+          "prioridade": "urgente",
+          "acoes": [
+            "Acionar protocolo de emergência institucional",
+            "Solicitar avaliação médica imediata",
+            "Monitoramento contínuo até estabilização"
+          ]
+        }
+      }
+    },
+    {
+      "event": "llm_call",
+      "provider": "ollama",
+      "model": "gemma4:e2b"
+    },
+    {
+      "event": "llm_response",
+      "message_preview": "Este é um protótipo educacional e não substitui uma avaliação médica profissional. Os dados indicam um risco elevado que exige acionamento imediato dos protocolos de emergência e a"
+    }
+  ]
+}
